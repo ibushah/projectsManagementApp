@@ -1,0 +1,165 @@
+<div class="ui-g" style="width: 100%;
+            font-size: 26px;
+            text-align: center;
+            margin-top: 20px;
+            ">
+    <div class="ui-lg-3 ui-md-3"></div>
+    <div class="ui-lg-4 ui-md-4">
+        <div style="text-align: center;color:black;font-weight: 100;">
+            <img src="https://img.icons8.com/ultraviolet/45/000000/home.png"> <span> DATAHUB
+            </span></div>
+    </div>
+
+    <div class="ui-lg-5 ui-md-5">
+        <img src="https://img.icons8.com/metro/26/000000/user-male-circle.png">
+        <span style="font-size:18px;color:rgb(43, 41, 41)"> Admin@gmail.com</span>
+        <p-dropdown #dd [style]="{fontSize: '18px',margin:'10px'}" (onChange)="dropdownchange(dd)"
+            [dropdownIcon]="'pi pi-sort-amount-down-alt'" [options]="dropItems" [(ngModel)]="selectedOption">
+        </p-dropdown>
+    </div>
+
+
+</div>
+<div class="ui-g" style="width: 100%;">
+
+
+
+    <p-card [style]="{
+        width: '100%',
+          'font-size': '26px',
+          'text-align': 'center'
+        }">
+        <div *ngIf="projectBtnDisabled">
+
+            <p-table #dt [columns]="projectCol" [value]="projectData" [totalRecords]="totalRecords" [paginator]="true"
+                [rows]="5">
+                <ng-template pTemplate="caption">
+                    <div class="ui-g">
+                        <div class="ui-lg-5">
+                            <button [ngClass]="projectBtn" [disabled]="projectBtnDisabled" pButton
+                                style="border-radius: 0px !important;margin:2px" type="button" label="Projects"
+                                (click)="showProjects()"></button>
+                            <button [ngClass]="datasetBtn" [disabled]="datasetBtnDisabled" pButton
+                                style="border-radius: 0px !important;margin:2px" type="button" label="Datasets"
+                                (click)="showDatasets()"></button>
+                        </div>
+                        <div class="ui-lg-2"></div>
+                        <div class="ui-lg-5">
+                            <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+                            <input type="text" pInputText size="50" placeholder="Global Filter"
+                                (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto" />
+                        </div>
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            {{ col.header }}
+                        </th>
+                        <th style="text-align: center;">
+                            Action
+                        </th>
+                    </tr>
+
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of columns">
+                            {{ rowData[col.field] }}
+                        </td>
+                        <td>
+                            <img (click)="back()" style="cursor: pointer;margin-right:5px;"
+                                src="https://img.icons8.com/ios-filled/30/000000/back.png">
+                            <img style="cursor: pointer;"
+                                src="https://img.icons8.com/material/30/000000/delete-forever--v2.png">
+
+
+
+                        </td>
+                    </tr>
+                </ng-template>
+
+            </p-table>
+        </div>
+
+        <!-- ************DATASETS TABLE************** -->
+
+        <div *ngIf="datasetBtnDisabled">
+
+            <p-table #dt [columns]="datasetCol" [value]="datasetData" [totalRecords]="totalRecords" [paginator]="true"
+                [rows]="5">
+                <ng-template pTemplate="caption">
+                    <div class="ui-g">
+                        <div class="ui-lg-5">
+                            <button [ngClass]="projectBtn" [disabled]="projectBtnDisabled" pButton
+                                style="border-radius: 0px !important;margin:2px" type="button" label="Projects"
+                                (click)="showProjects()"></button>
+                            <button [ngClass]="datasetBtn" [disabled]="datasetBtnDisabled" pButton
+                                style="border-radius: 0px !important;margin:2px" type="button" label="Datasets"
+                                (click)="showDatasets()"></button>
+                        </div>
+                        <div class="ui-lg-2"></div>
+                        <div class="ui-lg-5">
+                            <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+                            <input type="text" pInputText size="50" placeholder="Global Filter"
+                                (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto" />
+                        </div>
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            {{ col.header }}
+                        </th>
+                        <th style="text-align: center;">
+                            Action
+                        </th>
+                    </tr>
+
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr [pSelectableRow]="rowData">
+                        <td *ngFor="let col of columns">
+                            {{ rowData[col.field] }}
+                        </td>
+
+                        <td>
+                            <img (click)="back()" style="cursor: pointer;margin-right:5px;"
+                                src="https://img.icons8.com/ios-filled/30/000000/back.png">
+                            <img style="cursor: pointer;"
+                                src="https://img.icons8.com/material/30/000000/delete-forever--v2.png">
+
+
+
+                        </td>
+
+                    </tr>
+                </ng-template>
+
+            </p-table>
+
+        </div>
+        <!-- *******ADD DATASET BUTTON******** -->
+        <div *ngIf="datasetBtnDisabled" style="margin-top:10px;width: 100%">
+            <p style="text-align: right;font-size: 16px;color: rgb(51, 50, 50);"><span
+                    (click)="routeToNewProjectComponent()" style="cursor: pointer;"> <img
+                            style="position:relative;top:5px;" src="https://img.icons8.com/material/22/000000/plus.png">
+                        New Dataset </span>
+            </p>
+        </div>
+
+        <!-- *******ADD PROJECT BUTTON******** -->
+        <div *ngIf="projectBtnDisabled" style="margin-top:10px;width: 100%">
+            <p style="text-align: right;font-size: 16px;color: rgb(51, 50, 50);"> <span
+                    (click)="routeToNewProjectComponent()" style="cursor: pointer;"><img
+                        style="position: relative;top:5px;" src="https://img.icons8.com/material/22/000000/plus.png">
+                    New Project</span>
+            </p>
+        </div>
+    </p-card>
+
+
+
+</div>

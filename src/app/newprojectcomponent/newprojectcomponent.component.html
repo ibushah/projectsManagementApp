@@ -1,0 +1,97 @@
+<div class="ui-g" style="width: 100%;
+font-size: 26px;
+text-align: center;
+margin-top: 20px;
+">
+    <div class="ui-lg-3 ui-md-3"></div>
+    <div class="ui-lg-4 ui-md-4">
+        <div style="text-align: center;color:black;font-weight: 100;">
+            <img src="https://img.icons8.com/ultraviolet/45/000000/home.png"> <span> DATAHUB
+            </span></div>
+    </div>
+
+    <div class="ui-lg-5 ui-md-5">
+        <img src="https://img.icons8.com/metro/26/000000/user-male-circle.png">
+        <span style="font-size:18px;color:rgb(43, 41, 41)"> Admin@gmail.com</span>
+        <p-dropdown [style]="{fontSize: '18px',margin:'10px'}" #dd (onChange)="dropdownchange(dd)" [dropdownIcon]="'pi pi-sort-amount-down-alt'"
+            [options]="dropItems" [(ngModel)]="selectedOption"> </p-dropdown>
+    </div>
+
+
+</div>
+
+<div class="ui-g" style="width: 100%;">
+
+
+    <div class="ui-g-12">
+        <p style="text-align: left;font-size: 16px;">Complete the form to create a new project</p>
+    </div>
+
+
+
+
+
+    <div class="ui-lg-12 ui-md-12 ui-sm-12">
+        <p-card [style]="{
+        width: '100%',
+        'font-size': '26px',
+        'text-align': 'center'
+        }">
+            <div class="ui-g" style="width: 100%;border:1px solid black;">
+<div class="ui-g-12">
+        <p style="text-align: right;"><img
+            style="cursor: pointer;" (click)="routeToMainComponent()"   src="https://img.icons8.com/windows/24/000000/cancel.png"></p>
+</div>
+<div class="ui-g-1"></div>
+
+                <div class="ui-lg-4 ui-md-5 ui-sm-12">
+                       
+                    <div class="ui-g">
+                          
+                        <div class="ui-g-12">
+                            <input type="text" style="width:100%" pInputText placeholder="Projects Name" />
+                        </div>
+                        <div class="ui-g-12">
+                            <textarea [rows]="5" [cols]="30" style="width:100%" placeholder="Description" pInputTextarea
+                                [(ngModel)]="property"></textarea>
+                        </div>
+                        <div class="ui-g-12">
+                            <p-dropdown [style]="{width:'100%'}" [options]="projectStatus" [(ngModel)]="selectedStatus">
+                            </p-dropdown>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-lg-3 ui-md-1 ui-sm-12"></div>
+                
+                <div class="ui-lg-4 ui-md-5 ui-sm-12">
+                        <div class="ui-g-12"></div>
+                        <div class="ui-g-12"></div>
+                       
+                    <p style="text-align: left;font-size:18px" class="ui-g-12">
+                            <img style="position: relative;top:5px;" src="https://img.icons8.com/material/22/000000/plus.png">   Add Dataset
+                    </p>
+                    <p  style="text-align: left;font-size:18px" class="ui-g-12">
+                            <img style="position: relative;top:5px;" src="https://img.icons8.com/material/22/000000/plus.png">   Add Attachment
+                    </p >
+                    <p  style="text-align: left;font-size:18px" class="ui-g-12">
+                            <img style="position: relative;top:5px;" src="https://img.icons8.com/material/22/000000/plus.png">  Add Comments
+                    </p >
+                    <p  style="text-align: left;font-size:18px" class="ui-g-12">
+                            <img style="position: relative;top:5px;" src="https://img.icons8.com/material/22/000000/share.png">   Share with
+                    </p>
+                  
+                </div>
+
+
+
+            </div>
+
+        </p-card>
+
+
+
+
+
+    </div>
+</div>

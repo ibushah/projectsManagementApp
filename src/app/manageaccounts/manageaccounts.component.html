@@ -1,0 +1,84 @@
+<div class="ui-g" style="width: 100%;
+            font-size: 26px;
+            text-align: center;
+            margin-top: 20px;
+            ">
+    <div class="ui-lg-3 ui-xl-3 ui-md-3"></div>
+    <div class="ui-lg-4 ui-xl-4 ui-md-4">
+        <div style="text-align: center;color:black;font-weight: 100;">
+            <img src="https://img.icons8.com/ultraviolet/45/000000/home.png"> <span> DATAHUB
+            </span></div>
+    </div>
+
+    <div class="ui-lg-5 ui-xl-5 ui-md-5">
+        <img src="https://img.icons8.com/metro/26/000000/user-male-circle.png">
+        <span style="font-size:18px;color:rgb(43, 41, 41)"> Admin@gmail.com</span>
+        <p-dropdown #dd [style]="{fontSize: '18px',margin:'10px'}" (onChange)="dropdownchange(dd)"
+            [dropdownIcon]="'pi pi-sort-amount-down-alt'" [options]="dropItems" [(ngModel)]="selectedOption">
+        </p-dropdown>
+    </div>
+
+
+</div>
+
+<div class="ui-g" style="width: 100%;">
+
+    <div class="ui-g-1"></div>
+    <div class="ui-g-11">
+        <p style="text-align: left;font-size: 16px;">Manage Accounts</p>
+    </div>
+
+
+
+
+    <div class="ui-lg-1">
+    </div>
+    <div class="ui-lg-10 ui-xl-10 ui-md-10 ui-sm-12">
+        <p-card [style]="{
+            width: '100%',
+              'font-size': '26px',
+              'text-align': 'center'
+            }">
+            <div class="ui-g" style="width: 100%;">
+                <div class="ui-g-1"></div>
+                <div style="border:1px solid black;" class="ui-g-10 ui-md-10 ui-sm-12">
+                    <p style="text-align: right"><img
+                        style="cursor: pointer;" (click)="routeToMainComponent()"     src="https://img.icons8.com/windows/24/000000/cancel.png"></p>
+                    <p style="text-align: left;font-size:14px;margin-bottom:10px;">List of users registered</p>
+                    <div style="border:1px solid black;">
+
+                        <!-- *******LIST OF USERS******* -->
+                        <div class="ui-g" *ngFor="let user of users" style="border-bottom:1px solid black">
+
+                            <div class="ui-lg-10 ui-xl-10 ui-md-10 ui-sm-10" style="text-align: left;  font-size: 16px;">
+                                {{user.email}}</div>
+                            <div class="ui-lg-2 ui-xl-2 ui-md-2 ui-sm-2" style="text-align: right; font-size: 16px;">
+                                <img style="cursor: pointer;margin-right:10px"
+                                    src="https://img.icons8.com/windows/24/000000/edit-property.png">
+                                <img style="cursor: pointer;"
+                                    src="https://img.icons8.com/material-rounded/24/000000/delete-forever.png">
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <!-- **********NEW USER*********** -->
+
+
+
+                    <div style="margin-top:10px;width: 100%">
+                        <p style="cursor: pointer;text-align: right;font-size: 16px;color: rgb(51, 50, 50);"> <img
+                                style="position: relative;top:5px;"
+                                src="https://img.icons8.com/material/22/000000/plus.png"> New User </p>
+                    </div>
+                </div>
+            </div>
+        </p-card>
+    </div>
+
+
+
+
+</div>
