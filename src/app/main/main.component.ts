@@ -90,7 +90,10 @@ export class MainComponent implements OnInit {
     else if(e.value==="changePassword")
     this.router.navigate(['/changepassword']);
     else if(e.value==="logout")
+    {
+      sessionStorage.clear();
     this.router.navigate(['/']);
+    }
 
   }
 

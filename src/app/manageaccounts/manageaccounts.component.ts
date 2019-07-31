@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
+import {AuthService} from '../services/auth.service'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-manageaccounts',
@@ -9,9 +11,9 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class ManageaccountsComponent implements OnInit {
   dropItems;
 
-  users;
+  users=[];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private service:AuthService) { }
 
   ngOnInit() {
 
@@ -21,15 +23,34 @@ export class ManageaccountsComponent implements OnInit {
       { label: 'Logout', value: "logout" },
     ];
 
-    this.users=[
-      {email:'ibu@gmail.com'},
-      {email:'amer@gmail.com'},
-      {email:'ali@gmail.com'},
-      {email:'asad@gmail.com'},
-      {email:'huzaifa@gmail.com'},
-    ]
+    // this.users=[
+    //   {email:'ibu@gmail.com'},
+    //   {email:'amer@gmail.com'},
+    //   {email:'ali@gmail.com'},
+    //   {email:'asad@gmail.com'},
+    //   {email:'huzaifa@gmail.com'},
+    // ]
+
+    this.responseMapping();
+
+    
   }
 
+  responseMapping()
+  {
+    this.service.getAllUsers().subscribe((response)=>
+    {
+    var obj;
+   response.map((v)=>
+   {
+     obj={
+      email:v.email
+    }
+    this.users.push(obj)
+   })
+   
+    })
+  }
 
 
   
@@ -47,7 +68,7 @@ export class ManageaccountsComponent implements OnInit {
     this.router.navigate(['/']);
 
   }
-  routeToMain()
+  routeToMainComponent()
   {
     this.router.navigate(['/main']);
   }
