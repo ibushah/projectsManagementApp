@@ -32,6 +32,7 @@ import { ChangpasswordComponent } from './changpassword/changpassword.component'
 import {CheckboxModule} from 'primeng/checkbox';
 import { AuthGuard } from './auth.guard';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CreateUserComponent } from './create-user/create-user.component';
     ProjectdetailcomponentComponent,
     NewdatasetcomponentComponent,
     ChangpasswordComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,
@@ -63,13 +65,14 @@ import { CreateUserComponent } from './create-user/create-user.component';
     InputTextModule,
     DialogModule,
     InputTextareaModule,
-    ToastModule
+    ToastModule,
+
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: NoopInterceptor,
     multi: true,
-  }, MessageService, AuthGuard],
+  },    ManageaccountsComponent, MessageService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

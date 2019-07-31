@@ -53,10 +53,9 @@
                             <div class="ui-lg-10 ui-xl-10 ui-md-10 ui-sm-10" style="text-align: left;  font-size: 16px;">
                                 {{user.email}}</div>
                             <div class="ui-lg-2 ui-xl-2 ui-md-2 ui-sm-2" style="text-align: right; font-size: 16px;">
-                                <img style="cursor: pointer;margin-right:10px"
-                                    src="https://img.icons8.com/windows/24/000000/edit-property.png">
+                                    <app-update-user [id]="user.id"></app-update-user>
                                 <img style="cursor: pointer;"
-                                    src="https://img.icons8.com/material-rounded/24/000000/delete-forever.png">
+                                  (click)="deleteUser(user.id)"  src="https://img.icons8.com/material-rounded/24/000000/delete-forever.png">
                             </div>
                         </div>
 

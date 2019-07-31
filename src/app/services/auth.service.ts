@@ -18,4 +18,19 @@ export class AuthService {
        console.log(obj)
     return this.http.post(environment.baseUrl+"token/forgotpassword",obj);
   }
+
+  public createNewUser(obj:any):Observable<any>{
+    return this.http.post(environment.baseUrl+"token/newuser",obj);
+  }
+
+  public deleteUser(id):Observable<any>{
+    return this.http.delete(environment.baseUrl+"token/deleteuser/"+id);
+  }
+  public getUser(id):Observable<any>{
+    return this.http.get(environment.baseUrl+"token/getuser/"+id);
+  }
+
+  public updateUser(id:Number,obj:any):Observable<any>{
+    return this.http.put(environment.baseUrl+"token/updateuser/"+id,obj);
+  }
 }

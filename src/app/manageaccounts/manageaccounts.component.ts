@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from "@angular/router";
-import {AuthService} from '../services/auth.service'
+import { AuthService } from '../services/auth.service'
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,9 +11,9 @@ import { Observable } from 'rxjs';
 export class ManageaccountsComponent implements OnInit {
   dropItems;
 
-  users=[];
+  users = [];
 
-  constructor(private router: Router,private service:AuthService) { }
+  constructor(private router: Router, private service: AuthService) { }
 
   ngOnInit() {
 
@@ -33,43 +33,50 @@ export class ManageaccountsComponent implements OnInit {
 
     this.responseMapping();
 
-    
+
   }
 
-  responseMapping()
-  {
-    this.service.getAllUsers().subscribe((response)=>
-    {
-    var obj;
-   response.map((v)=>
-   {
-     obj={
-      email:v.email
-    }
-    this.users.push(obj)
-   })
-   
+  responseMapping() {
+    this.users = [];
+    this.service.getAllUsers().subscribe((response) => {
+      var obj;
+      console.log(response)
+      response.map((v) => {
+        obj = {
+          email: v.email,
+          id: v.id
+        }
+        this.users.push(obj)
+      })
+
     })
   }
 
 
-  
+
   showTable() {
 
   }
 
-  dropdownchange(e)
-  {
+  deleteUser(id) {
+    this.service.deleteUser(id).subscribe((response) => {
+      console.log(response)
+      this.responseMapping();
+    }, (error) => {
+        console.log(error)
+      })
+  }
+
+  dropdownchange(e) {
     console.log(e)
-    
-     if(e.value==="changePassword")
-    this.router.navigate(['/changepassword']);
-    else if(e.value==="logout")
-    this.router.navigate(['/']);
+
+    if (e.value === "changePassword")
+      this.router.navigate(['/changepassword']);
+    else if (e.value === "logout")
+      this.router.navigate(['/']);
 
   }
-  routeToMainComponent()
-  {
+  routeToMainComponent() {
     this.router.navigate(['/main']);
   }
 }

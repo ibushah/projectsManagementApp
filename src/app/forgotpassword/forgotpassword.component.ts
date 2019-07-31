@@ -18,6 +18,7 @@ export class ForgotpasswordComponent implements OnInit {
 
     this.service.forgotPassword(e).subscribe((response) => {
       console.log(response)
+      
     },(error)=>{
       console.log(error)
     })
